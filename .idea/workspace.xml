@@ -19,13 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae66e9d3-12a1-4424-8dfe-1bbadec559e0" name="Default Changelist" comment="" />
+    <list default="true" id="ae66e9d3-12a1-4424-8dfe-1bbadec559e0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/ib_logfile0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/ibdata1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql/ibtmp1" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/ibtmp1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/src/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -174,6 +180,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597878281600</updated>
       <workItem from="1597878283327" duration="12753000" />
+      <workItem from="1597938926297" duration="32000" />
     </task>
     <servers />
   </component>
@@ -190,6 +197,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1471" y="-267" key="#com.intellij.ide.util.MemberChooser" timestamp="1597888138865">
