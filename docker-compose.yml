@@ -15,6 +15,7 @@ services:
     depends_on:
       - php
       - mysql
+      - composer
     networks:
       - laravel
 
@@ -48,3 +49,9 @@ services:
       - "9000:9000"
     networks:
       - laravel
+
+  composer:
+    image: composer:1.9
+    command: ["composer", "install"]
+    volumes:
+      - ./src:/app
