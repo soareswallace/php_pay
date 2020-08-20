@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0c0458cd7bf0aa562d0e4f09f6d9d59",
+    "content-hash": "ff6e55814e312343c93ec4413406106b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -421,6 +421,56 @@
                 "validator"
             ],
             "time": "2020-08-08T21:28:19+00:00"
+        },
+        {
+            "name": "ezyang/htmlpurifier",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ezyang/htmlpurifier.git",
+                "reference": "15258fd24ee4c3da2e4681f41ce9404c74f8b24d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/15258fd24ee4c3da2e4681f41ce9404c74f8b24d",
+                "reference": "15258fd24ee4c3da2e4681f41ce9404c74f8b24d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "require-dev": {
+                "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTMLPurifier": "library/"
+                },
+                "files": [
+                    "library/HTMLPurifier.composer.php"
+                ],
+                "exclude-from-classmap": [
+                    "/library/HTMLPurifier/Language/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Edward Z. Yang",
+                    "email": "admin@htmlpurifier.org",
+                    "homepage": "http://ezyang.com"
+                }
+            ],
+            "description": "Standards compliant HTML filter written in PHP",
+            "homepage": "http://htmlpurifier.org/",
+            "keywords": [
+                "html"
+            ],
+            "time": "2020-07-06T18:36:33+00:00"
         },
         {
             "name": "fideloper/proxy",
@@ -2109,6 +2159,89 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "smorken/ext-http",
+            "version": "v5.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/scott_morken/laravel-ext-http.git",
+                "reference": "1b6e8315e479e284740141ed1a4ded47bbf55d0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/scott_morken/laravel-ext-http/get/1b6e8315e479e284740141ed1a4ded47bbf55d0a.zip",
+                "reference": "1b6e8315e479e284740141ed1a4ded47bbf55d0a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "smorken/sanitizer": "~5.0"
+            },
+            "require-dev": {
+                "laravel/framework": "5.1.*",
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Smorken\\Ext\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Scott Morken",
+                    "email": "scott.morken@phoenixcollege.edu"
+                }
+            ],
+            "description": "HTTP extension for Laravel 5.1",
+            "homepage": "https://bitbucket.org/scott_morken/laravel-ext-http",
+            "time": "2017-06-12T17:57:39+00:00"
+        },
+        {
+            "name": "smorken/sanitizer",
+            "version": "v5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/scott_morken/laravel-sanitizer.git",
+                "reference": "d73948d2bb05b94f95fd16b2c3e253dc76758555"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/scott_morken/laravel-sanitizer/get/d73948d2bb05b94f95fd16b2c3e253dc76758555.zip",
+                "reference": "d73948d2bb05b94f95fd16b2c3e253dc76758555",
+                "shasum": ""
+            },
+            "require": {
+                "ezyang/htmlpurifier": "dev-master",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Smorken\\Sanitizer\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Scott Morken",
+                    "email": "scott.morken@phoenixcollege.edu"
+                }
+            ],
+            "time": "2016-04-06T16:47:30+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
