@@ -64,7 +64,7 @@ class PaymentsService
 
                 if ($this->isAuthorized()) {
                     DB::commit();
-                    $this->sendNotificationToTheUser($payer, $payee, $value);
+                    $this->sendNotificationToAnUser($payer, $payee, $value);
                     return true;
                 }
             }
@@ -72,7 +72,8 @@ class PaymentsService
             return false;
         } catch (Exception $exception) {
             DB::rollBack();
-            //Logar e lançar um Sentry com a mensagem de erro que vem na exception
+            //Log an error
+            //Launch Sentry
             throw new HttpException(403, self::GENERIC_ERROR_MESSAGE);
         }
     }
@@ -103,7 +104,7 @@ class PaymentsService
      * @param User $payee
      * @param float $value
      */
-    private function sendNotificationToTheUser(User $payer, User $payee, float $value)
+    private function sendNotificationToAnUser(User $payer, User $payee, float $value)
     {
         $event = new MoneyExchangeEvent($payer, $payee, $value);
         $this->eventDispatcher->dispatch($event, MoneyExchangeEvent::EVENT_NAME);
