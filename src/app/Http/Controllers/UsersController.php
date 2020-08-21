@@ -90,7 +90,9 @@ class UsersController extends Controller
             $payer = $this->userRepository->findUserById($payerId);
             $payee = $this->userRepository->findUserById($payeeId);
 
-            if ($this->isAblePerformToTransaction($payer, $payee, $value)) {
+            if ($payer !== null && $payee !== null &&
+                $this->isAblePerformToTransaction($payer, $payee, $value)
+            ) {
                 DB::beginTransaction();
 
                 $this->userRepository->performDebitForUser($payer, $value);
