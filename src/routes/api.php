@@ -19,6 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('printpayername', 'UsersController@printPayerName');
-Route::post('iscnpj', 'UsersController@isPJ');
-Route::post('transaction', 'UsersController@transaction');
+Route::post('transaction', 'PaymentsController@transaction');

@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Controllers;
 
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PaymentsController;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class UsersControllerTest extends TestCase
+class PaymentsControllerTest extends TestCase
 {
     const PAYER_ID = '98';
     const PAYEE_ID = '99';
@@ -22,7 +22,7 @@ class UsersControllerTest extends TestCase
 
         $response
             ->assertStatus(200)
-            ->assertJson([UsersController::AUTHORIZED_MESSAGE]);
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::AUTHORIZED_MESSAGE]);
     }
 
     public function testOnSameIds()
@@ -35,7 +35,7 @@ class UsersControllerTest extends TestCase
 
         $response
             ->assertStatus(403)
-            ->assertJson([UsersController::OPERATION_NOT_ALLOWED]);
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
     public function testOnPJAsPayer()
@@ -48,7 +48,7 @@ class UsersControllerTest extends TestCase
 
         $response
             ->assertStatus(403)
-            ->assertJson([UsersController::OPERATION_NOT_ALLOWED]);
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
     public function testOnNoBalance()
@@ -61,7 +61,7 @@ class UsersControllerTest extends TestCase
 
         $response
             ->assertStatus(403)
-            ->assertJson([UsersController::OPERATION_NOT_ALLOWED]);
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
     public function testOnPayerNotFound()
@@ -74,7 +74,7 @@ class UsersControllerTest extends TestCase
 
         $response
             ->assertStatus(403)
-            ->assertJson([UsersController::OPERATION_NOT_ALLOWED]);
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
     public function testOnPayeeNotFound()
@@ -87,6 +87,6 @@ class UsersControllerTest extends TestCase
 
         $response
             ->assertStatus(403)
-            ->assertJson([UsersController::OPERATION_NOT_ALLOWED]);
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 }
