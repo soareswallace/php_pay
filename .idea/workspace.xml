@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -21,20 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ae66e9d3-12a1-4424-8dfe-1bbadec559e0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/homestead/failed_jobs.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/homestead/failed_jobs.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/homestead/migrations.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/homestead/migrations.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/homestead/password_resets.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/homestead/password_resets.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/homestead/users.frm" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/homestead/users.frm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/homestead/users.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/homestead/users.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/ib_buffer_pool" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/ib_logfile0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/mysql/ibdata1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/migrations/2020_08_19_234932_creating_lojistas_attributes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/migrations/2020_08_19_234932_creating_lojistas_attributes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/seeds/UsersTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/Feature/ExampleTest.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/Unit/ExampleTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +174,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/tests/Feature/Controllers" />
+      <recent name="$PROJECT_DIR$/src/tests/Feature" />
+      <recent name="$PROJECT_DIR$/src/tests/Unit/Http/Controllers" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -191,7 +193,7 @@
       <updated>1597878281600</updated>
       <workItem from="1597878283327" duration="12753000" />
       <workItem from="1597938926297" duration="32000" />
-      <workItem from="1597961056466" duration="6726000" />
+      <workItem from="1597961056466" duration="9850000" />
     </task>
     <servers />
   </component>
@@ -220,10 +222,10 @@
     </state>
     <state x="-1471" y="-267" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1280/-2560.-676.2560.1440@-2560.-676.2560.1440" timestamp="1597888138865" />
     <state x="871" y="364" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597965726593" />
-    <state x="749" y="44" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597965287894">
+    <state x="749" y="44" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1597969612345">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="749" y="44" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597965287894" />
+    <state x="749" y="44" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597969612345" />
     <state x="762" y="402" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597965682610">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
@@ -239,16 +241,20 @@
       <screen x="-2560" y="-676" width="2560" height="1440" />
     </state>
     <state x="-1457" y="-26" key="NewPhpFileDialog/0.0.2048.1280/-2560.-676.2560.1440@-2560.-676.2560.1440" timestamp="1597888097697" />
-    <state x="790" y="313" width="568" height="654" key="find.popup" timestamp="1597967301669">
+    <state x="525" y="279" key="SettingsEditor" timestamp="1597968575542">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="525" y="279" key="SettingsEditor/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597968575542" />
+    <state x="790" y="313" width="568" height="654" key="find.popup" timestamp="1597970331122">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state x="-1573" y="-324" width="586" height="735" key="find.popup/0.0.2048.1280/-2560.-676.2560.1440@-2560.-676.2560.1440" timestamp="1597890115272" />
-    <state x="790" y="313" width="568" height="654" key="find.popup/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597967301669" />
-    <state x="756" y="340" width="670" height="601" key="search.everywhere.popup" timestamp="1597965486037">
+    <state x="790" y="313" width="568" height="654" key="find.popup/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597970331122" />
+    <state x="756" y="340" width="670" height="601" key="search.everywhere.popup" timestamp="1597970305116">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
     <state x="756" y="340" width="670" height="601" key="search.everywhere.popup/0.0.2048.1280/-2560.-653.2560.1417@0.0.2048.1280" timestamp="1597964916189" />
     <state x="-1615" y="-294" width="670" height="676" key="search.everywhere.popup/0.0.2048.1280/-2560.-676.2560.1440@-2560.-676.2560.1440" timestamp="1597889343416" />
-    <state x="756" y="340" width="670" height="601" key="search.everywhere.popup/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597965486037" />
+    <state x="756" y="340" width="670" height="601" key="search.everywhere.popup/0.0.2048.1280/-2560.-676.2560.1440@0.0.2048.1280" timestamp="1597970305116" />
   </component>
 </project>
