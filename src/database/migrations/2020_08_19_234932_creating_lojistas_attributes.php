@@ -15,8 +15,8 @@ class CreatingLojistasAttributes extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->char('CPF/CNPJ', 15)->unique();
-            $table->boolean('isCNPJ')->default(false);
-            $table->float('saldo')->default(0.0);
+            $table->boolean('isPJ')->default(false);
+            $table->float('balance')->default(0.0);
         });
     }
 
