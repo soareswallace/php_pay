@@ -34,7 +34,7 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        Event::listen(MoneyExchangeEvent::EVENT_NAME, function (MoneyExchangeEvent $moneyExchangeEvent) {
+        Event::listen(MoneyExchangeEvent::MONEY_EXCHANGE_EVENT, function (MoneyExchangeEvent $moneyExchangeEvent) {
             $listener = new NotificationListener();
             $listener->sendNotificationToTheUser($moneyExchangeEvent->getPayee());
         });

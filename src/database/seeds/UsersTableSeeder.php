@@ -27,7 +27,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $faker->email,
                 'password' => $password,
                 'CPF/CNPJ' => $fakeCPF_CNPJ,
-                'isPJ' => $faker->boolean,
+                'isPJ' => $i === 99 ? true : $faker->boolean,
                 'balance' => $faker->randomFloat(2, 0, 100)
             ]);
         }

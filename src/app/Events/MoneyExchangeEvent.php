@@ -13,9 +13,11 @@ use Illuminate\Queue\SerializesModels;
 
 class MoneyExchangeEvent
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
-    const EVENT_NAME = 'money_exchange_event';
+    public const MONEY_EXCHANGE_EVENT = 'money_exchange_event';
 
     /** @var User */
     private $payee;

@@ -14,7 +14,7 @@ class UserRepository
         DB::table('users')->where('id', $user->id)->update(['balance' => $user->balance - $value]);
     }
 
-    public function perforCreditForUser(User $user, float $value)
+    public function performCreditForUser(User $user, float $value)
     {
         DB::table('users')->where('id', $user->id)->update(['balance' => $user->balance + $value]);
     }
