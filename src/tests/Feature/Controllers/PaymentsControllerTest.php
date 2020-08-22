@@ -8,11 +8,14 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PaymentsControllerTest extends TestCase
 {
-    private const PAYER_ID = 98;
-    private const PAYEE_ID = 99;
-    private const PJ_ID = 100;
+    private const PAYER_ID = 10;
+    private const PAYEE_ID = 12;
+    private const PJ_ID = 30;
     private const VALUE = 1;
 
+    /**
+     * @test
+     */
     public function testOnHappyPath()
     {
         $response = $this->postJson('/api/transaction', [
@@ -26,6 +29,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::AUTHORIZED_MESSAGE]);
     }
 
+    /**
+     * @test
+     */
     public function testOnSameIds()
     {
         $response = $this->postJson('/api/transaction', [
@@ -39,6 +45,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
+    /**
+     * @test
+     */
     public function testOnPJAsPayer()
     {
         $response = $this->postJson('/api/transaction', [
@@ -52,6 +61,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
+    /**
+     * @test
+     */
     public function testOnNoBalance()
     {
         $response = $this->postJson('/api/transaction', [
@@ -65,6 +77,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
+    /**
+     * @test
+     */
     public function testOnPayerIdInvalid()
     {
         $response = $this->postJson('/api/transaction', [
@@ -78,6 +93,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
+    /**
+     * @test
+     */
     public function testOnPayeeIdInvalid()
     {
         $response = $this->postJson('/api/transaction', [
@@ -91,6 +109,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::OPERATION_NOT_ALLOWED]);
     }
 
+    /**
+     * @test
+     */
     public function testOnPayeeKeyMissing()
     {
         $response = $this->postJson('/api/transaction', [
@@ -103,6 +124,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::BAD_REQUEST_MESSAGE]);
     }
 
+    /**
+     * @test
+     */
     public function testOnPayerKeyMissing()
     {
         $response = $this->postJson('/api/transaction', [
@@ -115,6 +139,9 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::BAD_REQUEST_MESSAGE]);
     }
 
+    /**
+     * @test
+     */
     public function testOnValueKeyMissing()
     {
         $response = $this->postJson('/api/transaction', [
@@ -127,10 +154,29 @@ class PaymentsControllerTest extends TestCase
             ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::BAD_REQUEST_MESSAGE]);
     }
 
+    /**
+     * @test
+     */
     public function testOnNotNumbers()
     {
         $response = $this->postJson('/api/transaction', [
             'value' => 'x',
+            'payer' => self::PAYER_ID,
+            'payee' => self::PAYEE_ID
+        ]);
+
+        $response
+            ->assertStatus(400)
+            ->assertJson([PaymentsController::MESSAGE_KEY => PaymentsController::BAD_REQUEST_MESSAGE]);
+    }
+
+    /**
+     * @test
+     */
+    public function testOnNegativeNumbers()
+    {
+        $response = $this->postJson('/api/transaction', [
+            'value' => -10,
             'payer' => self::PAYER_ID,
             'payee' => self::PAYEE_ID
         ]);

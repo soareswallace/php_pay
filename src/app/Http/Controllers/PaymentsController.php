@@ -65,11 +65,21 @@ class PaymentsController extends Controller
         }
     }
 
+    /**
+     * @param $request
+     * @return bool
+     */
     private function validateFields($request)
     {
-        return $this->validateCorrectKeys($request) && $this->areValuesNumerics($request);
+        return $this->validateCorrectKeys($request) &&
+            $this->hasValuesNumerics($request) &&
+            $this->hasPositiveValues($request);
     }
 
+    /**
+     * @param $request
+     * @return bool
+     */
     private function validateCorrectKeys($request)
     {
         return array_key_exists(self::VALUE_KEY, $request) &&
@@ -77,10 +87,25 @@ class PaymentsController extends Controller
             array_key_exists(self::PAYER_KEY, $request);
     }
 
-    private function areValuesNumerics($request)
+    /**
+     * @param $request
+     * @return bool
+     */
+    private function hasValuesNumerics($request)
     {
         return is_numeric($request[self::PAYER_KEY]) &&
             is_numeric($request[self::PAYEE_KEY]) &&
             is_numeric($request[self::VALUE_KEY]);
+    }
+
+    /**
+     * @param $request
+     * @return bool
+     */
+    private function hasPositiveValues($request)
+    {
+        return $request[self::PAYER_KEY] > 0 &&
+            $request[self::PAYEE_KEY] > 0 &&
+            $request[self::VALUE_KEY] > 0;
     }
 }
