@@ -18,6 +18,7 @@ class PaymentsController extends Controller
     public const MESSAGE_KEY = 'message';
     public const AUTHORIZED_MESSAGE = 'Autorizado';
     public const OPERATION_NOT_ALLOWED = 'Operação não permitida';
+    public const BAD_REQUEST_MESSAGE = 'Formato Inválido';
 
     private $paymentService;
 
@@ -37,25 +38,49 @@ class PaymentsController extends Controller
     public function transaction(Request $httpRequest)
     {
         $request = $httpRequest->json()->all();
+        $isAValidRequest = $this->validateFields($request);
 
-        try {
-            $payerId = $request[self::PAYER_KEY];
-            $payeeId = $request[self::PAYEE_KEY];
-            $value = $request[self::VALUE_KEY];
+        if ($isAValidRequest) {
+            try {
+                $payerId = $request[self::PAYER_KEY];
+                $payeeId = $request[self::PAYEE_KEY];
+                $value = $request[self::VALUE_KEY];
 
-            $processed = false;
+                $processed = false;
 
-            if ($payerId !== $payeeId) {
-                $processed = $this->paymentService->performTransaction($payerId, $payeeId, $value);
+                if ($payerId !== $payeeId) {
+                    $processed = $this->paymentService->performTransaction($payerId, $payeeId, $value);
+                }
+
+                if ($processed) {
+                    return response()->json([self::MESSAGE_KEY => self::AUTHORIZED_MESSAGE], 200);
+                }
+
+                return response()->json([self::MESSAGE_KEY => self::OPERATION_NOT_ALLOWED], 403);
+            } catch (Exception $exception) {
+                return response()->json([self::MESSAGE_KEY => $exception->getMessage()], $exception->getStatusCode());
             }
-
-            if ($processed) {
-                return response()->json([self::MESSAGE_KEY => self::AUTHORIZED_MESSAGE], 200);
-            }
-
-            return response()->json([self::MESSAGE_KEY => self::OPERATION_NOT_ALLOWED], 403);
-        } catch (Exception $exception) {
-            return response()->json([self::MESSAGE_KEY => $exception->getMessage()], $exception->getStatusCode());
+        } else {
+            return response()->json([self::MESSAGE_KEY => self::BAD_REQUEST_MESSAGE], 400);
         }
+    }
+
+    private function validateFields($request)
+    {
+        return $this->validateCorrectKeys($request) && $this->areValuesNumerics($request);
+    }
+
+    private function validateCorrectKeys($request)
+    {
+        return array_key_exists(self::VALUE_KEY, $request) &&
+            array_key_exists(self::PAYEE_KEY, $request) &&
+            array_key_exists(self::PAYER_KEY, $request);
+    }
+
+    private function areValuesNumerics($request)
+    {
+        return is_numeric($request[self::PAYER_KEY]) &&
+            is_numeric($request[self::PAYEE_KEY]) &&
+            is_numeric($request[self::VALUE_KEY]);
     }
 }
