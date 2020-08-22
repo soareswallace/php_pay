@@ -16,7 +16,7 @@ To run the tests, you need to run on the repository root folder the command belo
 
 `docker-compose exec php php /var/www/html/artisan test`
 
-To test the API, POST this JSON in `/transaction` endpoint:
+To test the API, POST this JSON in `/api/transaction` endpoint:
 
 ````
 {
