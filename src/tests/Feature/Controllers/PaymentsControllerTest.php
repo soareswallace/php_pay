@@ -5,12 +5,13 @@ namespace Tests\Feature\Controllers;
 use App\Http\Controllers\PaymentsController;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use UsersTableSeeder;
 
 class PaymentsControllerTest extends TestCase
 {
     private const PAYER_ID = 10;
     private const PAYEE_ID = 12;
-    private const PJ_ID = 30;
+    private const PJ_ID = UsersTableSeeder::NUMBER_OF_INSTANCES;
     private const VALUE = 1;
 
     /**
