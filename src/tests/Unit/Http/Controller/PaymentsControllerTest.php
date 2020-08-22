@@ -6,6 +6,7 @@ namespace Tests\Unit\Http\Controller;
 
 use App\Http\Controllers\PaymentsController;
 use App\Http\Service\PaymentsService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
@@ -29,6 +30,7 @@ class PaymentsControllerTest extends TestCase
     public function testHappyPath()
     {
         $request = $this->createARequest(self::PAYER_ID, self::PAYEE_ID, self::VALUE);
+
         $responseExpected = $this->createJSONResponse(
             PaymentsController::AUTHORIZED_MESSAGE
         );
@@ -44,21 +46,20 @@ class PaymentsControllerTest extends TestCase
 
     public function createARequest($payerId, $payeeId, $value)
     {
-        return new Request([], [], [
+        $request = new Request();
+
+        $request->setMethod('POST');
+        $request->request->add([
             PaymentsController::VALUE_KEY => $value,
             PaymentsController::PAYER_KEY => $payerId,
             PaymentsController::PAYEE_KEY => $payeeId
         ]);
+
+        return $request;
     }
 
-    public function createJSONResponse($message)
+    public function createJSONResponse($message, $code = 200)
     {
-        $response = [
-            PaymentsController::MESSAGE_KEY => $message
-        ];
-
-        $responseJSON = json_encode($response);
-
-        echo $responseJSON;
+        return new JsonResponse([PaymentsController::MESSAGE_KEY => $message], $code);
     }
 }
