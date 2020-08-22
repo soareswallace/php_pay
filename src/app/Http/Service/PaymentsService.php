@@ -60,7 +60,7 @@ class PaymentsService
                 DB::beginTransaction();
 
                 $this->userRepository->performDebitForUser($payer, $value);
-                $this->userRepository->perforCreditForUser($payee, $value);
+                $this->userRepository->performCreditForUser($payee, $value);
 
                 if ($this->isAuthorized()) {
                     DB::commit();
@@ -107,6 +107,6 @@ class PaymentsService
     private function sendNotificationToAnUser(User $payer, User $payee, float $value)
     {
         $event = new MoneyExchangeEvent($payer, $payee, $value);
-        $this->eventDispatcher->dispatch($event, MoneyExchangeEvent::EVENT_NAME);
+        $this->eventDispatcher->dispatch($event, MoneyExchangeEvent::MONEY_EXCHANGE_EVENT);
     }
 }
