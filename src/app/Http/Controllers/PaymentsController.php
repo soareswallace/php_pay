@@ -72,7 +72,7 @@ class PaymentsController extends Controller
     private function validateFields($request)
     {
         return $this->validateCorrectKeys($request) &&
-            $this->hasValuesNumerics($request) &&
+            $this->hasNumericsValues($request) &&
             $this->hasPositiveValues($request);
     }
 
@@ -91,7 +91,7 @@ class PaymentsController extends Controller
      * @param $request
      * @return bool
      */
-    private function hasValuesNumerics($request)
+    private function hasNumericsValues($request)
     {
         return is_numeric($request[self::PAYER_KEY]) &&
             is_numeric($request[self::PAYEE_KEY]) &&
