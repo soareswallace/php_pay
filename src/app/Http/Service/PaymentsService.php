@@ -51,11 +51,12 @@ class PaymentsService
      */
     public function performTransaction(string $payerId, string $payeeId, float $value)
     {
-        /** @var User $user */
-        $payer = $this->userRepository->findUserById($payerId);
-        $payee = $this->userRepository->findUserById($payeeId);
 
         try {
+            /** @var User $user */
+            $payer = $this->userRepository->findUserById($payerId);
+            $payee = $this->userRepository->findUserById($payeeId);
+
             if ($payee !== null && $payer !== null && $this->isPayerAblePerformToTransaction($payer, $payee, $value)) {
                 DB::beginTransaction();
 
@@ -74,7 +75,7 @@ class PaymentsService
             DB::rollBack();
             //Log an error
             //Launch Sentry
-            throw new HttpException(403, self::GENERIC_ERROR_MESSAGE);
+            throw new HttpException(503, self::GENERIC_ERROR_MESSAGE);
         }
     }
 

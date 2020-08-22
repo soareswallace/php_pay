@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Http;
 
 class NotificationListener
 {
-    const NOTIFICATION_URL = 'https://run.mocky.io/v3/b19f7b9f-9cbf-4fc6-ad22-dc30601aec04';
-    const MESSAGE_KEY = 'message';
+    private const NOTIFICATION_URL = 'https://run.mocky.io/v3/b19f7b9f-9cbf-4fc6-ad22-dc30601aec04';
+    private const MESSAGE_KEY = 'message';
 
     /**
      * Create the event listener.

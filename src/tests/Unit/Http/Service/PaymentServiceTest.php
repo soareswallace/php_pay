@@ -45,7 +45,6 @@ class PaymentServiceTest extends TestCase
 
         $payer = $this->createUser($payerId, 100);
         $payee = $this->createUser($payeeId, 10);
-        $event = new MoneyExchangeEvent($payer, $payee, $value);
 
 
         $this->userRepositoryMock->expects('findUserById')->with($payerId)->andReturn($payer);
@@ -63,7 +62,7 @@ class PaymentServiceTest extends TestCase
     /**
      * @test
      */
-    public function testOnDatabaseException()
+    public function testOnException()
     {
         $payerId = '1';
         $payeeId = '2';
