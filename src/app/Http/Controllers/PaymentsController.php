@@ -6,10 +6,6 @@ use App\Http\Service\PaymentsService;
 use Illuminate\Http\Request;
 use Exception;
 
-/**
- * Class PaymentsController
- * @package App\Http\Controllers
- */
 class PaymentsController extends Controller
 {
     public const PAYER_KEY = 'payer';
@@ -32,6 +28,8 @@ class PaymentsController extends Controller
     }
 
     /**
+     * /api/transaction Controller
+     *
      * @param Request $httpRequest
      * @return \Illuminate\Http\JsonResponse
      */
@@ -77,6 +75,8 @@ class PaymentsController extends Controller
     }
 
     /**
+     * Validate if all keys are present
+     *
      * @param $request
      * @return bool
      */
@@ -88,6 +88,8 @@ class PaymentsController extends Controller
     }
 
     /**
+     * Validate if all keys are numeric values
+     *
      * @param $request
      * @return bool
      */
@@ -99,6 +101,8 @@ class PaymentsController extends Controller
     }
 
     /**
+     * Validate if all values are positive
+     *
      * @param $request
      * @return bool
      */

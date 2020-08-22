@@ -10,6 +10,7 @@ use App\Repository\UserRepository;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Exception;
@@ -19,6 +20,7 @@ class PaymentsService
     public const AUTHORIZATION_URL = 'https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6';
     public const AUTHORIZED_MESSAGE = 'Autorizado';
     public const GENERIC_ERROR_MESSAGE = 'Operação não pode ser realizada';
+    public const PAYMENT_SERVICE_TAG = "[PAYMENT_SERVICE] - ";
 
     /**
      * @var UserRepository
@@ -31,16 +33,24 @@ class PaymentsService
     private $eventDispatcher;
 
     /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
      * PaymentsController constructor.
      * @param UserRepository $userRepository
      * @param EventDispatcher $eventDispatcher
+     * @param LoggerInterface $logger
      */
     public function __construct(
         UserRepository $userRepository,
-        EventDispatcher $eventDispatcher
+        EventDispatcher $eventDispatcher,
+        LoggerInterface $logger
     ) {
         $this->userRepository = $userRepository;
         $this->eventDispatcher = $eventDispatcher;
+        $this->logger = $logger;
     }
 
     /**
@@ -73,13 +83,15 @@ class PaymentsService
             return false;
         } catch (Exception $exception) {
             DB::rollBack();
-            //Log an error
-            //Launch Sentry
+            $this->logger->error(self::PAYMENT_SERVICE_TAG.$exception->getMessage());
+            //Throw a sentry
             throw new HttpException(503, self::GENERIC_ERROR_MESSAGE);
         }
     }
 
     /**
+     * Checks if the incoming payer user is able to perform the transaction.
+     *
      * @param User $payer
      * @param User $payee
      * @param float $value
@@ -91,6 +103,8 @@ class PaymentsService
     }
 
     /**
+     * Asks a external service for authorization.
+     *
      * @return bool
      */
     private function isAuthorized()
@@ -101,6 +115,8 @@ class PaymentsService
     }
 
     /**
+     * Throws an event to send notification to the receiver.
+     *
      * @param User $payer
      * @param User $payee
      * @param float $value

@@ -4,12 +4,12 @@
 namespace Tests\Unit\Http\Service;
 
 
-use App\Events\MoneyExchangeEvent;
 use App\Http\Service\PaymentsService;
 use App\Repository\UserRepository;
 use App\User;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Exception;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Tests\TestCase;
 
@@ -17,9 +17,14 @@ class PaymentServiceTest extends TestCase
 {
     use MockeryPHPUnitIntegration;
 
+    /** @var UserRepository|\Mockery\LegacyMockInterface|\Mockery\MockInterface  */
     private $userRepositoryMock;
 
+    /** @var \Mockery\LegacyMockInterface|\Mockery\MockInterface|EventDispatcher  */
     private $eventDispatcherMock;
+
+    /** @var \Mockery\LegacyMockInterface|\Mockery\MockInterface|LoggerInterface  */
+    private $loggerInterFaceMock;
 
     private $service;
 
@@ -31,7 +36,12 @@ class PaymentServiceTest extends TestCase
         parent::setUp();
         $this->userRepositoryMock = \Mockery::mock(UserRepository::class);
         $this->eventDispatcherMock = \Mockery::mock(EventDispatcher::class);
-        $this->service = new PaymentsService($this->userRepositoryMock, $this->eventDispatcherMock);
+        $this->loggerInterFaceMock = \Mockery::mock(LoggerInterface::class);
+        $this->service = new PaymentsService(
+            $this->userRepositoryMock,
+            $this->eventDispatcherMock,
+            $this->loggerInterFaceMock
+        );
     }
 
     /**
@@ -77,6 +87,11 @@ class PaymentServiceTest extends TestCase
         $this->userRepositoryMock->expects('performDebitForUser')->with($payer, $value);
         $this->userRepositoryMock->expects('performCreditForUser')->with($payee, $value)
             ->andThrow($exception);
+
+        $this->loggerInterFaceMock->expects('error')->with(
+            PaymentsService::PAYMENT_SERVICE_TAG.$exception->getMessage()
+        );
+
         $this->expectExceptionMessage(PaymentsService::GENERIC_ERROR_MESSAGE);
 
         $this->service->performTransaction($payerId, $payeeId, $value);

@@ -48,7 +48,7 @@ class NotificationListener
         }
 
         if ($attempts === 5) {
-            //lançar um Sentry
+            //Throw a sentry
         }
     }
 

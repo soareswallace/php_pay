@@ -14,7 +14,8 @@ class CreatingLojistasAttributes extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->char('CPF/CNPJ', 15)->unique();
+            $table->char('CPF', 11)->unique();
+            $table->char('CNPJ', 15)->unique()->nullable();
             $table->boolean('isPJ')->default(false);
             $table->float('balance')->default(0.0);
         });
@@ -28,7 +29,7 @@ class CreatingLojistasAttributes extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['CPF/CNPJ', 'isCPNJ']);
+            $table->dropColumn(['CPF', 'CNPJ', 'isPJ', 'balance']);
         });
 
     }

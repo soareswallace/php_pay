@@ -23,15 +23,17 @@ class UsersTableSeeder extends Seeder
         $numberOfInstances = self::NUMBER_OF_INSTANCES;
 
         for ($i = 0; $i < $numberOfInstances; $i++) {
-            $fakeCPF_CNPJ = $faker->numerify($faker->numberBetween(11111111111, 99999999999999));
+            $isPJ = $i === $numberOfInstances - 1;
+
             $password = Hash::make('toptal');
 
             User::create([
                 'Name' => $faker->name,
                 'email' => $faker->email,
                 'password' => $password,
-                'CPF/CNPJ' => $fakeCPF_CNPJ,
-                'isPJ' => $i === $numberOfInstances - 1,
+                'CPF' => strval($faker->numberBetween(11111111111, 99999999999)),
+                'CNPJ' => $isPJ ? strval($faker->numberBetween(11111111111111, 99999999999999)) : null,
+                'isPJ' => $isPJ,
                 'balance' => $faker->randomFloat(2, 1, 100)
             ]);
         }
